@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("./Images/background.webp");
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "rye";
+}
+
+header h1 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+h1 span {
+    color: #AC9CA4;
+}
+
+header button {
+    width: 200px;
+    height: 70px;
+    background-color: #A9A594;
+    font-size: 3rem;
+    font-family: "rye";
+    color: #564340;
+    border: none;
+    border-radius: 10px;
+}
+
+header button:hover {
+    cursor: pointer;
+}
+
+header button a {
+    text-decoration: none;
+    color: #564340;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 40%;
+    margin: 20px auto;
+}
+
+.card {
+    width: 135px;
+    height: 200px;
+    border: solid 3px black;
+    display: inline-block;
+    margin: 0 35px;
+    border-radius: 5%;
+    background-color: #BFB4B1;
+}
+
+.hidden {
+    background-image: url("./Images/card-back-design.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#dealer-cards, #player-cards {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+#dealer-cards .suit, #player-cards .suit {
+    font-size: 1.5rem;
+    margin-top: 40%;
+}
+
+#dealer-cards .value, #player-cards .value {
+    font-size: 4rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#stand, #hit {
+    width: 135px;
+    height: 50px;
+    font-family: "rye";
+    font-size: 1.75rem;
+    border-radius: 5px;
+    margin: 0 35px;
+}
+
+#hit {
+    background-color: #564340;
+    color: #AC9CA4;
+    border: solid 3px #564340;
+}
+
+#stand {
+    background-color: #AC9CA4;
+    color: #564340;
+    border: solid 3px #AC9CA4;
+}
+
+#stand:hover, #hit:hover {
+    cursor: pointer;
+}
+
+.player-total {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    background-color: #AC9CA4;
+}
+
+.dealer-total {
+    position: absolute;
+    bottom: 360px;
+    right: 40px;
+    background-color: black;
+    color: #AC9CA4;
+}
+
+.player-total, .dealer-total {
+    width: 100px;
+    height: 85px;
+    text-align: center;
+    font-size: 4.5rem;
+    border-radius: 10px;
+}
+
+.result {
+    font-size: 4rem;
+    text-transform: uppercase;
+    margin: 0;
+    background-color: #A9A594;
+    padding: 0 30px;
+    border-radius: 10px;
+    animation: flashingText 1s infinite;
+}
+
+@keyframes flashingText {
+    0%{color: black}
+    50%{color: transparent}
+    100%{color: black}
+}
