@@ -7,6 +7,7 @@ body {
     background-image: url("./Images/background.webp");
     background-size: cover;
     background-attachment: fixed;
+    background-position: center;
     font-family: "rye";
 }
 
@@ -46,13 +47,18 @@ header button a {
     margin: 20px auto;
 }
 
+#rules, #play {
+    margin: 0 25px;
+    padding: 0 10px;
+}
+
 .card {
     width: 135px;
     height: 200px;
     border: solid 3px black;
     display: inline-block;
-    margin: 0 35px;
     border-radius: 5%;
+    margin: 0 35px;
     background-color: #BFB4B1;
 }
 
@@ -88,7 +94,7 @@ header button a {
 }
 
 #stand, #hit {
-    width: 135px;
+    min-width: 141px;
     height: 50px;
     font-family: "rye";
     font-size: 1.75rem;
@@ -149,4 +155,25 @@ header button a {
     0%{color: black}
     50%{color: transparent}
     100%{color: black}
+}
+
+#scores {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    background-color: #AC9CA4;
+    width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#scores h2 {
+    font-size: 3rem;
+    margin: 10px 0;
+}
+
+#scores table {
+    width: 100%;
+    font-size: 1.7rem;
+    margin-bottom: 10px;
 }

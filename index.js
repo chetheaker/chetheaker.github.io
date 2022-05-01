@@ -3,9 +3,25 @@ let values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 let deck = [];
 let playerCards = [];
 let dealerCards = [];
+let wins = 0;
+let draws = 0;
+let losses = 0;
 // inspiration from https://www.programiz.com/javascript/examples/shuffle-card for deck creation
 
 const newGame = () => {
+    // if the button is the reset button, reset the scoreboard
+    if ($("#play").html() === "RESET") {
+        wins = 0;
+        draws = 0;
+        losses = 0;
+
+        // render on scoreboard
+        $(".wins").html(wins);
+        $(".draws").html(draws);
+        $(".losses").html(losses);
+    }
+
+    
     // new empty deck
     deck = [];
     // reset player and dealer's hands
@@ -70,7 +86,7 @@ const dealCards = () => {
     let dealerCard1Value = dealerCards[0].Value;
 
     // render cards for dealer
-    $("<div>").addClass("card").appendTo("#dealer-cards .card1");
+    $("<div>").addClass("card").appendTo("#dealer-cards .card1").hide().slideDown(500);
     $("<div>").addClass("card").addClass("hidden").appendTo("#dealer-cards .card2");
 
     // render suit and value of card1 (card2 is hidden)
@@ -86,8 +102,8 @@ const dealCards = () => {
 
 
     // render cards for player
-    $("<div>").addClass("card").appendTo("#player-cards .card1");
-    $("<div>").addClass("card").appendTo("#player-cards .card2");
+    $("<div>").addClass("card").appendTo("#player-cards .card1").hide().slideDown(500);
+    $("<div>").addClass("card").appendTo("#player-cards .card2").hide().slideDown(500);
 
     // render suit and value of card1 + card2
     $("<div>").addClass("suit").html(playerCard1Suit).appendTo("#player-cards .card1 .card");
@@ -166,6 +182,9 @@ const playerPts = () => {
 
         // show player's final total
         $("<div>").addClass("player-total").html(points).appendTo("#totals");
+
+        // change reset button to play
+        $("#play").html("PLAY");
     }
 
 
@@ -230,7 +249,7 @@ const hit = () => {
 
 const renderHit = (card) => {
     // render card for player
-    $("<div>").addClass("card").addClass("card" + playerCards.length).appendTo("#player-cards .extra-cards");
+    $("<div>").addClass("card").addClass("card" + playerCards.length).appendTo("#player-cards .extra-cards").hide().slideDown(500);
 
     // find suit and value for new card
     let cardValue = card.Value;
@@ -282,6 +301,9 @@ const stand = () => {
             showResult("push");
         }
     }
+
+    // change button back to play
+    $("#play").html("PLAY");
 }
 
 const dealerHit = () => {
@@ -298,7 +320,7 @@ const dealerHit = () => {
 
 const renderDealerHit = (card) => {
     // render card for dealer
-    $("<div>").addClass("card").addClass("card" + dealerCards.length).appendTo("#dealer-cards .extra-cards");
+    $("<div>").addClass("card").addClass("card" + dealerCards.length).appendTo("#dealer-cards .extra-cards").hide().slideDown(500);
 
     // find suit and value for new card
     let cardValue = card.Value;
@@ -334,6 +356,26 @@ const showResult = (result) => {
         $("<div>").addClass("suit").html(dealerCard2Suit).appendTo("#dealer-cards .card2 .card");
         $("<div>").addClass("value").html(dealerCard2Value).appendTo("#dealer-cards .card2 .card");
     }
+
+    // update scoreboard
+    updateScores(result);
+}
+
+const updateScores = (result) => {
+
+    // update counters depending on who won the round
+    if (result === "you win") {
+        wins++;
+    } else if (result === "push") {
+        draws++;
+    } else {
+        losses++;
+    }
+
+    // render on scoreboard
+    $(".wins").html(wins);
+    $(".draws").html(draws);
+    $(".losses").html(losses);
 }
 
 
